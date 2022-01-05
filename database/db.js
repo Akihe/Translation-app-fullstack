@@ -7,3 +7,12 @@ const pool = mysql.createPool({
   password: process.env.DB_PASSWORD,
   database: process.env.DB_DB,
 });
+
+let connectionFunctions = {
+  connect: (callback) => {},
+  close: (callback) => {},
+  save: (location, callback) => {},
+  findAll: (callback) => {},
+  deleteById: (id, callback) => {},
+  findById: (id, callback) => {},
+};
