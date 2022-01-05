@@ -9,15 +9,23 @@ const pool = mysql.createPool({
 });
 
 let connectionFunctions = {
-  test: pool.query("SELECT * FROM locations", (err, locations) => {
-    if (err) {
-      throw err;
-    } else {
-      locations.forEach((loc) => {
-        console.log(loc);
+  test: () => {
+    function func(resolve, reject) {
+      let result = [];
+      pool.query("SELECT * FROM locations", (err, locations) => {
+        if (err) {
+          throw err;
+        } else {
+          locations.forEach((loc) => {
+            result.push(loc);
+          });
+        }
+        console.log(result);
+        resolve(result);
       });
     }
-  }),
+    return new Promise(func);
+  },
 
   connect: (callback) => {},
   close: (callback) => {},
@@ -26,3 +34,5 @@ let connectionFunctions = {
   deleteById: (id, callback) => {},
   findById: (id, callback) => {},
 };
+
+module.exports = connectionFunctions;
