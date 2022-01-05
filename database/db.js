@@ -9,6 +9,16 @@ const pool = mysql.createPool({
 });
 
 let connectionFunctions = {
+  test: pool.query("SELECT * FROM locations", (err, locations) => {
+    if (err) {
+      throw err;
+    } else {
+      locations.forEach((loc) => {
+        console.log(loc);
+      });
+    }
+  }),
+
   connect: (callback) => {},
   close: (callback) => {},
   save: (location, callback) => {},
