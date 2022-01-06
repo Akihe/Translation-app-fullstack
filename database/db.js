@@ -12,7 +12,7 @@ let connectionFunctions = {
   test: () => {
     function func(resolve, reject) {
       let result = [];
-      pool.query("SELECT * FROM locations", (err, locations) => {
+      pool.query("SELECT * FROM dictionary", (err, locations) => {
         if (err) {
           throw err;
         } else {
@@ -27,8 +27,6 @@ let connectionFunctions = {
     return new Promise(func);
   },
 
-  connect: (callback) => {},
-  close: (callback) => {},
   save: (location, callback) => {},
   findAll: (callback) => {},
   deleteById: (id, callback) => {},
