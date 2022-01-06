@@ -13,8 +13,8 @@ const server = app.listen(8080, () => {
   console.log(`Listening on port ${server.address().port}`);
 });
 
-app.get("/locations", async (req, res) => {
-  console.log("noutaa locations");
+app.get("/dictionary", async (req, res) => {
+  console.log("noutaa taulun");
   res.send(await pool.test());
 });
 
