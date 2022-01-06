@@ -6,16 +6,17 @@ function App() {
   const [database, setDatabase] = useState([]);
 
   async function fetchButton() {
-    let data = await fetch("http://localhost:8080/locations");
+    let data = await fetch("http://localhost:8080/dictionary");
     let js = await data.json();
+    console.log(js);
     setDatabase(js);
   }
 
   const allQuestions = database.map((question) => {
     return (
       <TranslationComponent
-        originalWord={question.latitude}
-        correctTranslation={question.longitude}
+        originalWord={question.word_in_finnish}
+        correctTranslation={question.word_in_english}
       />
     );
   });
