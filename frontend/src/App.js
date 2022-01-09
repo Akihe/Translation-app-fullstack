@@ -1,30 +1,26 @@
+import { BrowserRouter, Routes, Route, Link } from "react-router-dom";
 import "./App.css";
-import React, { useState } from "react";
-import TranslationComponent from "./TranslationComponent";
+import React from "react";
+import UserPage from "./UserPage";
+import AdminPage from "./AdminPage";
 
 function App() {
-  const [database, setDatabase] = useState([]);
-
-  async function fetchButton() {
-    let data = await fetch("http://localhost:8080/dictionary");
-    let js = await data.json();
-    console.log(js);
-    setDatabase(js);
-  }
-
-  const allQuestions = database.map((question) => {
-    return (
-      <TranslationComponent
-        originalWord={question.word_in_finnish}
-        correctTranslation={question.word_in_english}
-      />
-    );
-  });
-
   return (
     <div className="App">
-      <button onClick={fetchButton}>Nouda</button>
-      {allQuestions}
+      <BrowserRouter>
+        <div className="header">
+          <Link className="links" to="/">
+            User
+          </Link>
+          <Link className="links" to="/admin">
+            Admin
+          </Link>
+        </div>
+        <Routes>
+          <Route path="/" element={<UserPage />} />
+          <Route path="/admin" element={<AdminPage />} />
+        </Routes>
+      </BrowserRouter>
     </div>
   );
 }
