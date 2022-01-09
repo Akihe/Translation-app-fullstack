@@ -1,16 +1,46 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import Input from "@mui/material/Input";
 import Button from "@mui/material/Button";
-import TranslationComponent from "./TranslationComponent";
+import EditComponent from "./EditComponent";
 
 function AdminComponents() {
   const [finnishWord, setFinnishWord] = useState("");
   const [englishWord, setEnglishWord] = useState("");
   const [tag, setTag] = useState("");
+  const [database, setDatabase] = useState([]);
+
+  async function fetchButton() {
+    let data = await fetch("http://localhost:8080/dictionary");
+    let js = await data.json();
+    console.log(js);
+    setDatabase(js);
+  }
+
+  useEffect(() => {
+    fetchButton();
+  }, []);
+
+  function deleteQuestion() {}
+
+  const allQuestions = database.map((question) => {
+    return (
+      <EditComponent
+        deleteQuestion={deleteQuestion}
+        database={database}
+        id={question.id}
+        originalWord={question.word_in_finnish}
+        correctTranslation={question.word_in_english}
+        tag={question.tag}
+      />
+    );
+  });
 
   function handleSubmit(e) {
     e.preventDefault();
     postToDatabase();
+    setFinnishWord("");
+    setEnglishWord("");
+    setTag("");
   }
 
   function handleChange(input, target) {
@@ -48,16 +78,19 @@ function AdminComponents() {
             value={finnishWord}
             onChange={(input) => handleChange(input, "finnish")}
             placeholder="In Finnish"
+            required
           ></Input>
           <Input
             value={englishWord}
             onChange={(input) => handleChange(input, "english")}
             placeholder="In English"
+            required
           ></Input>
           <Input
             value={tag}
             onChange={(input) => handleChange(input, "tag")}
             placeholder="tag"
+            required
           ></Input>
 
           <Button variant="contained" type="submit">
@@ -65,6 +98,7 @@ function AdminComponents() {
           </Button>
         </form>
       </div>
+      <div className="flexbox">{allQuestions}</div>
     </div>
   );
 }
