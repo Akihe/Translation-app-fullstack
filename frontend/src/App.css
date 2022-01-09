@@ -10,6 +10,24 @@
   margin: 10px;
 }
 
+.flexbox {
+  color: white;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.flexContent {
+  background-color: #0a1929;
+
+  outline: 1px;
+  outline-style: double;
+  border-radius: 25px;
+  padding: 10px;
+  margin: 10px;
+  min-width: 150px;
+}
+
 .links {
   font-size: 40px;
   background-color: aqua;
