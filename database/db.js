@@ -14,7 +14,7 @@ let connectionFunctions = {
       let result = [];
       pool.query("SELECT * FROM dictionary", (err, locations) => {
         if (err) {
-          throw err;
+          reject();
         } else {
           locations.forEach((loc) => {
             result.push(loc);
