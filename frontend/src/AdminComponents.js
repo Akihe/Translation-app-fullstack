@@ -9,7 +9,7 @@ function AdminComponents() {
   const [tag, setTag] = useState("");
   const [database, setDatabase] = useState([]);
 
-  async function fetchButton() {
+  async function fetchAll() {
     let data = await fetch("http://localhost:8080/dictionary");
     let js = await data.json();
     console.log(js);
@@ -17,7 +17,7 @@ function AdminComponents() {
   }
 
   useEffect(() => {
-    fetchButton();
+    fetchAll();
   }, []);
 
   function deleteQuestion() {}
@@ -41,6 +41,7 @@ function AdminComponents() {
     setFinnishWord("");
     setEnglishWord("");
     setTag("");
+    fetchAll();
   }
 
   function handleChange(input, target) {
