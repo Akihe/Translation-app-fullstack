@@ -1,15 +1,19 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import TranslationComponent from "./TranslationComponent";
 
 function UserPage() {
   const [database, setDatabase] = useState([]);
 
-  async function fetchButton() {
+  async function fetchAll() {
     let data = await fetch("http://localhost:8080/dictionary");
     let js = await data.json();
     console.log(js);
     setDatabase(js);
   }
+
+  useEffect(() => {
+    fetchAll();
+  }, []);
 
   const allQuestions = database.map((question) => {
     return (
@@ -23,7 +27,6 @@ function UserPage() {
   return (
     <div>
       <h1>This is where you play the game</h1>
-      <button onClick={fetchButton}>Nouda</button>
       {allQuestions}
     </div>
   );
