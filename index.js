@@ -18,7 +18,13 @@ app.get("/dictionary", async (req, res) => {
   res.send(await pool.test());
 });
 
-pool.test();
+app.post("/dictionary/", async (req, res) => {
+  try {
+    res.send(await pool.save(req.body));
+  } catch (err) {
+    res.status(500).send("error");
+  }
+});
 
 function main() {
   console.log("Hello world");
