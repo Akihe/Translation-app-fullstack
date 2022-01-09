@@ -1,4 +1,6 @@
 import React, { useState } from "react";
+import Input from "@mui/material/Input";
+import Button from "@mui/material/Button";
 
 function TranslationComponent({ originalWord, correctTranslation }) {
   const [answer, setAnswer] = useState("");
@@ -26,14 +28,15 @@ function TranslationComponent({ originalWord, correctTranslation }) {
     <div className="words">
       <fetchAll />
       <form onSubmit={handleSubmit}>
-        <span>{originalWord}</span>
-
-        <input
+        <span className="originalword">{originalWord}</span>
+        <Input
           value={answer}
           onChange={changeAnswer}
           placeholder="answer"
-        ></input>
-        <button type="submit">Update</button>
+        ></Input>
+        <Button variant="contained" type="submit">
+          Update
+        </Button>
         <span>{result}</span>
       </form>
     </div>
