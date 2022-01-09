@@ -31,18 +31,14 @@ let connectionFunctions = {
     function func(resolve, reject) {
       let sql = mysql.format(
         "INSERT INTO dictionary (word_in_finnish, word_in_english, tag) VALUES (?,?,?)",
-        [
-          pool.escape(word.word_in_finnish),
-          pool.escape(word.word_in_english),
-          pool.escape(word.tag),
-        ]
+        [word.word_in_finnish, word.word_in_english, word.tag]
       );
 
       pool.query(sql, (err, result) => {
         if (err) {
           reject(err);
         } else {
-          resolve("New location saved.");
+          resolve("New question saved.");
         }
       });
     }
