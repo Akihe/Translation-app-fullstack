@@ -26,7 +26,6 @@ function TranslationComponent({ originalWord, correctTranslation }) {
 
   return (
     <div className="words">
-      <fetchAll />
       <form onSubmit={handleSubmit}>
         <span className="originalword">{originalWord}</span>
         <Input
