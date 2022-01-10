@@ -15,9 +15,10 @@ function UserPage() {
     fetchAll();
   }, []);
 
-  const allQuestions = database.map((question) => {
+  const allQuestions = database.map((question, index) => {
     return (
       <TranslationComponent
+        key={index}
         originalWord={question.word_in_finnish}
         correctTranslation={question.word_in_english}
       />
