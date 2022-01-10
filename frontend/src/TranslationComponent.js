@@ -16,11 +16,11 @@ function TranslationComponent({ originalWord, correctTranslation }) {
   }
 
   function checkAnswer() {
-    if (answer === correctTranslation.toString()) {
-      setResult("Oikein");
+    if (answer.toUpperCase() === correctTranslation.toUpperCase()) {
+      setResult("Correct!");
       console.log("result asetettu oikein");
-    } else if (answer !== correctTranslation.toString()) {
-      setResult("Väärin");
+    } else {
+      setResult("Wrong.");
     }
   }
 
