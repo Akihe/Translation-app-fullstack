@@ -3,7 +3,6 @@ import Button from "@mui/material/Button";
 import DeleteIcon from "@mui/icons-material/Delete";
 
 function EditComponent({
-  database,
   id,
   originalWord,
   correctTranslation,
@@ -20,7 +19,7 @@ function EditComponent({
       <Button
         variant="outlined"
         startIcon={<DeleteIcon />}
-        onclick={deleteQuestion}
+        onClick={() => deleteQuestion(id)}
       >
         Delete
       </Button>
