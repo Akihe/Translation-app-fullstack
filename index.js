@@ -25,6 +25,18 @@ app.post("/dictionary/", async (req, res) => {
     res.status(500).send("error");
   }
 });
+app.delete("/dictionary/:id([0-9]+)", async (req, res) => {
+  try {
+    let del = await pool.deleteById(Number(req.params.id));
+    if (del === null) {
+      res.status(404).send(`Could not find id ${req.params.id}`);
+    } else {
+      res.send(del);
+    }
+  } catch (err) {
+    res.status(500).send("Error");
+  }
+});
 
 function main() {
   console.log("Hello world");

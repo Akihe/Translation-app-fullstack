@@ -45,7 +45,24 @@ let connectionFunctions = {
     return new Promise(func);
   },
   findAll: (callback) => {},
-  deleteById: (id, callback) => {},
+  deleteById: (id) => {
+    function func(resolve, reject) {
+      pool.query(
+        "DELETE FROM dictionary WHERE ID = ?",
+        pool.escape(id),
+        (err, result) => {
+          if (err) {
+            reject(err);
+          } else if (result.affectedRows < 1) {
+            resolve(null);
+          } else {
+            resolve("Deleted id " + id);
+          }
+        }
+      );
+    }
+    return new Promise(func);
+  },
   findById: (id, callback) => {},
 };
 

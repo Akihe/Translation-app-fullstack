@@ -16,21 +16,34 @@ function AdminComponents() {
     setDatabase(js);
   }
 
+  async function deleteFromDatabase(id) {
+    fetch(`http://localhost:8080/dictionary/${id}`, {
+      method: "DELETE",
+    });
+  }
+
   useEffect(() => {
     fetchAll();
   }, []);
 
-  function deleteQuestion() {}
+  function deleteQuestion(id) {
+    console.log(id);
+    const filteredQuestions = [...database].filter(
+      (question) => question.id !== id
+    );
+    deleteFromDatabase(id);
+    setDatabase(filteredQuestions);
+  }
 
-  const allQuestions = database.map((question) => {
+  const allQuestions = database.map((question, index) => {
     return (
       <EditComponent
-        deleteQuestion={deleteQuestion}
-        database={database}
+        key={index}
         id={question.id}
         originalWord={question.word_in_finnish}
         correctTranslation={question.word_in_english}
         tag={question.tag}
+        deleteQuestion={deleteQuestion}
       />
     );
   });
