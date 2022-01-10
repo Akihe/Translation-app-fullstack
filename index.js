@@ -14,7 +14,6 @@ const server = app.listen(8080, () => {
 });
 
 app.get("/dictionary", async (req, res) => {
-  console.log("noutaa taulun");
   res.send(await pool.test());
 });
 
