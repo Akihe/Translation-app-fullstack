@@ -35,6 +35,21 @@ function AdminComponents() {
     setDatabase(filteredQuestions);
   }
 
+  function editQuestion(id, originalWord, currentWord) {
+    console.log(id, originalWord, currentWord);
+
+    /*
+    fetch(`http://localhost:8080/dictionary/${id}`, {
+      method: "PUT",
+      headers: {
+        Accept: "application/json",
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({}),
+    });
+    */
+  }
+
   const allQuestions = database.map((question, index) => {
     return (
       <EditComponent
@@ -44,6 +59,7 @@ function AdminComponents() {
         correctTranslation={question.word_in_english}
         tag={question.tag}
         deleteQuestion={deleteQuestion}
+        editQuestion={editQuestion}
       />
     );
   });
