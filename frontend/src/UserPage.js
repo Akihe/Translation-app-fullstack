@@ -13,6 +13,7 @@ function UserPage() {
   const [database, setDatabase] = useState([]);
   const [selectedTag, setSelectedTags] = useState([]);
   const [chosenQuestions, setChosenQuestions] = useState([]);
+  const [correctQuestions, setCorrectQuestions] = useState(0);
 
   async function fetchAll() {
     let data = await fetch("http://localhost:8080/dictionary");
@@ -80,6 +81,10 @@ function UserPage() {
     );
   }
 
+  function correctAmount(question) {
+    setCorrectQuestions(question);
+  }
+
   function selectLanguage(finnishToEnglish) {
     const chooseQuestions = database.map((question, index) => {
       if (selectedTag.includes(question.tag)) {
@@ -89,13 +94,17 @@ function UserPage() {
             originalWord={question.word_in_finnish}
             correctTranslation={question.word_in_english}
             finnishToEnglish={finnishToEnglish}
+            correctAmount={correctAmount}
           />
         );
       } else {
         return null;
       }
     });
-    setChosenQuestions(chooseQuestions);
+    const finalQuestions = chooseQuestions.filter(
+      (question) => question != null
+    );
+    setChosenQuestions(finalQuestions);
   }
 
   return (
@@ -109,6 +118,9 @@ function UserPage() {
       </Button>
       <MultipleSelectCheckmarks />
       {chosenQuestions}
+      <p>
+        Total points {correctQuestions} / {chosenQuestions.length}
+      </p>
     </div>
   );
 }
