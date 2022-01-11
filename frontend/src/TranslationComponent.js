@@ -22,7 +22,6 @@ function TranslationComponent({
   function checkAnswer() {
     if (answer.toUpperCase() === correctTranslation.toUpperCase()) {
       setResult("Correct!");
-      console.log("result asetettu oikein");
     } else {
       setResult("Wrong.");
     }
