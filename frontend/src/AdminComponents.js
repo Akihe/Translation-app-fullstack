@@ -35,19 +35,34 @@ function AdminComponents() {
     setDatabase(filteredQuestions);
   }
 
-  function editQuestion(id, originalWord, currentWord) {
-    console.log(id, originalWord, currentWord);
+  function editQuestion(id, editedFinnish, editedEnglish, editedTag) {
+    let editedDatabase = database.map((q) => {
+      if (q.id === id) {
+        q = {
+          id: id,
+          word_in_finnish: editedFinnish,
+          word_in_english: editedEnglish,
+          tag: editedTag,
+        };
+      }
+      return q;
+    });
 
-    /*
+    setDatabase(editedDatabase);
+
     fetch(`http://localhost:8080/dictionary/${id}`, {
       method: "PUT",
       headers: {
         Accept: "application/json",
         "Content-Type": "application/json",
       },
-      body: JSON.stringify({}),
+      body: JSON.stringify({
+        id: id,
+        word_in_finnish: editedFinnish,
+        word_in_english: editedEnglish,
+        tag: editedTag,
+      }),
     });
-    */
   }
 
   const allQuestions = database.map((question, index) => {
