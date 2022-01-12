@@ -37,6 +37,14 @@ app.delete("/dictionary/:id([0-9]+)", async (req, res) => {
   }
 });
 
+app.put("/dictionary/:id([0-9]+)", async (req, res) => {
+  try {
+    res.send(await pool.editById(req.body));
+  } catch (err) {
+    res.status(500).send("error");
+  }
+});
+
 function main() {
   console.log("Hello world");
 }
