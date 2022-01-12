@@ -63,7 +63,24 @@ let connectionFunctions = {
     }
     return new Promise(func);
   },
-  findById: (id, callback) => {},
+  editById: (word) => {
+    function func(resolve, reject) {
+      let sql = mysql.format(
+        "UPDATE dictionary SET word_in_finnish = ?, word_in_english = ?, tag = ? WHERE id = ?",
+        [word.word_in_finnish, word.word_in_english, word.tag, word.id]
+      );
+
+      console.log(sql);
+      pool.query(sql, (err, result) => {
+        if (err) {
+          reject(err);
+        } else {
+          resolve("Database edited");
+        }
+      });
+    }
+    return new Promise(func);
+  },
 };
 
 module.exports = connectionFunctions;
