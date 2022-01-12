@@ -11,19 +11,35 @@ function EditComponent({
   deleteQuestion,
   editQuestion,
 }) {
+  const [open, setOpen] = useState(false);
+  const [editedFinnish, setEditedFinnish] = useState(originalWord);
+  const [editedEnglish, setEditedEnglish] = useState(correctTranslation);
+  const [editedTag, setEditedTag] = useState(tag);
+
+  function handleChange(input, target) {
+    if (target === "fin") {
+      setEditedFinnish(input.target.value);
+    } else if (target === "eng") {
+      setEditedEnglish(input.target.value);
+    } else if (target === "tag") {
+      setEditedTag(input.target.value);
+    }
+  }
+
+  const handleClose = (edit) => {
+    if (edit) {
+      editQuestion(id, editedFinnish, editedEnglish, editedTag);
+    }
+
+    setOpen(false);
+  };
+
   const handleClickOpen = () => {
-    <EditPopup
-      id={id}
-      originalWord={originalWord}
-      correctTranslation={correctTranslation}
-      tag={tag}
-      editQuestion={tag}
-    />;
+    setOpen(true);
   };
 
   return (
     <div className="flexContent">
-      <p>Id = {id}</p>
       <p>Finnish = {originalWord}</p>
       <p>English = {correctTranslation}</p>
       <p>Tag = {tag}</p>
@@ -37,6 +53,14 @@ function EditComponent({
       >
         Delete
       </Button>
+      <EditPopup
+        originalWord={originalWord}
+        correctTranslation={correctTranslation}
+        tag={tag}
+        open={open}
+        handleClose={handleClose}
+        handleChange={handleChange}
+      />
     </div>
   );
 }
