@@ -11,7 +11,6 @@ function EditPopup({
   originalWord,
   correctTranslation,
   tag,
-  editQuestion,
   open,
   handleClose,
   handleChange,
