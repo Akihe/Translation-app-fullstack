@@ -20,7 +20,12 @@ function TranslationComponent({
   }
 
   function checkAnswer() {
-    if (answer.toUpperCase() === correctTranslation.toUpperCase()) {
+    if (
+      finnishToEnglish &&
+      answer.toUpperCase() === correctTranslation.toUpperCase()
+    ) {
+      setResult("Correct!");
+    } else if (answer.toUpperCase() === originalWord.toUpperCase()) {
       setResult("Correct!");
     } else {
       setResult("Wrong.");
