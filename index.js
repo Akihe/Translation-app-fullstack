@@ -9,7 +9,6 @@ const pool = require("./database/db.js");
 
 app.use(express.json());
 app.use(cors());
-app.use(express.static("frontend/build"));
 
 const port = process.env.PORT || 5000;
 
@@ -24,7 +23,7 @@ app.get("*", (req, res) => {
   res.sendFile(path.join(__dirname + "/frontend/build/index.html"));
 });
 
-app.get("/", async (req, res) => {
+app.get("/dictionary", async (req, res) => {
   res.send(await pool.findAll());
 });
 
