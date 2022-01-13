@@ -136,7 +136,6 @@ function AdminComponents() {
             placeholder="tag"
             required
           ></Input>
-
           <Button variant="contained" type="submit">
             Submit
           </Button>
