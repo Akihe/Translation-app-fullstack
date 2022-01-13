@@ -3,9 +3,11 @@ import Input from "@mui/material/Input";
 import Button from "@mui/material/Button";
 
 function TranslationComponent({
+  id,
   originalWord,
   correctTranslation,
   finnishToEnglish,
+  correctQuestion,
 }) {
   const [answer, setAnswer] = useState("");
   const [result, setResult] = useState("");
@@ -25,10 +27,13 @@ function TranslationComponent({
       answer.toUpperCase() === correctTranslation.toUpperCase()
     ) {
       setResult("Correct!");
+      correctQuestion(true, id);
     } else if (answer.toUpperCase() === originalWord.toUpperCase()) {
       setResult("Correct!");
+      correctQuestion(true, id);
     } else {
       setResult("Wrong.");
+      correctQuestion(false, id);
     }
   }
 
@@ -42,7 +47,7 @@ function TranslationComponent({
           placeholder="answer"
         ></Input>
         <Button variant="contained" type="submit">
-          Update
+          Check Answer
         </Button>
         <span>{result}</span>
       </form>
@@ -57,7 +62,7 @@ function TranslationComponent({
           placeholder="answer"
         ></Input>
         <Button variant="contained" type="submit">
-          Update
+          Check Answer
         </Button>
         <span>{result}</span>
       </form>
