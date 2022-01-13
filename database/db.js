@@ -1,12 +1,14 @@
 const mysql = require("mysql");
 
-const pool = mysql.createPool({
+let config = {
+  host: "mydb.tamk.fi",
+  user: process.env.user,
+  password: process.env.password,
+  database: process.env.database,
   connectionLimit: 10,
-  host: process.env.DB_HOST,
-  user: process.env.DB_USER,
-  password: process.env.DB_PASSWORD,
-  database: process.env.DB_DB,
-});
+};
+
+const pool = mysql.createPool(config);
 
 let connectionFunctions = {
   findAll: () => {
