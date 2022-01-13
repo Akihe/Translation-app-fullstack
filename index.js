@@ -14,7 +14,7 @@ const server = app.listen(8080, () => {
 });
 
 app.get("/dictionary", async (req, res) => {
-  res.send(await pool.test());
+  res.send(await pool.findAll());
 });
 
 app.post("/dictionary/", async (req, res) => {
