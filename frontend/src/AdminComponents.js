@@ -12,19 +12,18 @@ function AdminComponents() {
   async function fetchAll() {
     let data = await fetch("http://localhost:8080/dictionary");
     let js = await data.json();
-    console.log(js);
     setDatabase(js);
   }
+
+  useEffect(() => {
+    fetchAll();
+  }, []);
 
   async function deleteFromDatabase(id) {
     fetch(`http://localhost:8080/dictionary/${id}`, {
       method: "DELETE",
     });
   }
-
-  useEffect(() => {
-    fetchAll();
-  }, []);
 
   function deleteQuestion(id) {
     console.log(id);
