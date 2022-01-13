@@ -15,7 +15,7 @@ const server = app.listen(port, () => {
   console.log(`Listening on port ${server.address().port}`);
 });
 
-app.get("/", async (req, res) => {
+app.get("/dictionary", async (req, res) => {
   res.send(await pool.findAll());
 });
 

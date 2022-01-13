@@ -16,7 +16,7 @@ function UserPage() {
   const [correctAnswers, setCorrectAnswers] = useState([]);
 
   async function fetchAll() {
-    let data = await fetch("/");
+    let data = await fetch("/dictionary");
     let js = await data.json();
     console.log(js);
     setDatabase(js);
