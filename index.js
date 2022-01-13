@@ -23,7 +23,7 @@ app.get("*", (req, res) => {
   res.sendFile(path.join(__dirname + "/frontend/build/index.html"));
 });
 
-app.get("/dictionary", async (req, res) => {
+app.get("/", async (req, res) => {
   res.send(await pool.findAll());
 });
 
