@@ -10,7 +10,7 @@ function AdminComponents() {
   const [database, setDatabase] = useState([]);
 
   async function fetchAll() {
-    let data = await fetch("http://localhost:8080/dictionary");
+    let data = await fetch("/dictionary");
     let js = await data.json();
     setDatabase(js);
   }
@@ -20,7 +20,7 @@ function AdminComponents() {
   }, []);
 
   async function deleteFromDatabase(id) {
-    fetch(`http://localhost:8080/dictionary/${id}`, {
+    fetch(`/dictionary/${id}`, {
       method: "DELETE",
     });
   }
@@ -49,7 +49,7 @@ function AdminComponents() {
 
     setDatabase(editedDatabase);
 
-    fetch(`http://localhost:8080/dictionary/${id}`, {
+    fetch(`/dictionary/${id}`, {
       method: "PUT",
       headers: {
         Accept: "application/json",
@@ -98,7 +98,7 @@ function AdminComponents() {
   }
 
   function postToDatabase() {
-    fetch("http://localhost:8080/dictionary/", {
+    fetch("/dictionary/", {
       method: "POST",
       headers: {
         Accept: "application/json",
