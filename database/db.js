@@ -9,7 +9,7 @@ const pool = mysql.createPool({
 });
 
 let connectionFunctions = {
-  test: () => {
+  findAll: () => {
     function func(resolve, reject) {
       let result = [];
       pool.query("SELECT * FROM dictionary", (err, locations) => {
@@ -44,7 +44,6 @@ let connectionFunctions = {
     }
     return new Promise(func);
   },
-  findAll: (callback) => {},
   deleteById: (id) => {
     function func(resolve, reject) {
       pool.query(
