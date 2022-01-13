@@ -17,7 +17,7 @@ const server = app.listen(port, () => {
 });
 
 // Serve static files from the React frontend app
-app.use(express.static("/frontend/build"));
+app.use(express.static("frontend/build"));
 // Anything that doesn't match the above, send back index.html
 app.get("*", (req, res) => {
   res.sendFile(path.join("/frontend/build/index.html"));
