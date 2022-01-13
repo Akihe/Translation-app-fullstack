@@ -23,7 +23,7 @@ app.post("/dictionary/", async (req, res) => {
   try {
     res.send(await pool.save(req.body));
   } catch (err) {
-    res.status(500).send("error");
+    res.status(500).send("Error");
   }
 });
 app.delete("/dictionary/:id([0-9]+)", async (req, res) => {
