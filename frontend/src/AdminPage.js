@@ -4,7 +4,7 @@ import AdminComponents from "./AdminComponents";
 function AdminPage() {
   return (
     <div>
-      <p>Tänne tulee admin setit</p>
+      <p>Insert a new word pair, edit or delete the current ones.</p>
       <AdminComponents />
     </div>
   );
