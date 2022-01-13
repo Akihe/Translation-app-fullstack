@@ -13,7 +13,7 @@ function UserPage() {
   const [database, setDatabase] = useState([]);
   const [selectedTag, setSelectedTags] = useState([]);
   const [chosenQuestions, setChosenQuestions] = useState([]);
-  const [correctQuestions, setCorrectQuestions] = useState(0);
+  const [correctAnswers, setCorrectAnswers] = useState([]);
 
   async function fetchAll() {
     let data = await fetch("http://localhost:8080/dictionary");
@@ -81,8 +81,21 @@ function UserPage() {
     );
   }
 
-  function correctAmount(question) {
-    setCorrectQuestions(question);
+  function correctQuestion(isCorrect, questionId) {
+    console.log(questionId);
+    console.log(correctAnswers.includes(questionId));
+    if (isCorrect && !correctAnswers.includes(questionId)) {
+      setCorrectAnswers((state, props) => {
+        let updateCorrectQs = [...state, questionId];
+        console.log(state);
+        return updateCorrectQs;
+      });
+    } else {
+      setCorrectAnswers((state, props) => {
+        let updateCorrectQs = state.filter((id) => id !== questionId);
+        return updateCorrectQs;
+      });
+    }
   }
 
   function selectLanguage(finnishToEnglish) {
@@ -91,10 +104,11 @@ function UserPage() {
         return (
           <TranslationComponent
             key={index}
+            id={question.id}
             originalWord={question.word_in_finnish}
             correctTranslation={question.word_in_english}
             finnishToEnglish={finnishToEnglish}
-            correctAmount={correctAmount}
+            correctQuestion={correctQuestion}
           />
         );
       } else {
@@ -119,7 +133,7 @@ function UserPage() {
       <MultipleSelectCheckmarks />
       {chosenQuestions}
       <p>
-        Total points {correctQuestions} / {chosenQuestions.length}
+        Total points {correctAnswers.length} / {chosenQuestions.length}
       </p>
     </div>
   );
