@@ -4,7 +4,8 @@
   "description": "A web-based full stack application that helps you learn English by giving you words which you translate to Finnish.\r The app tells you if your answers are correct or not.",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node index.js"
   },
   "repository": {
     "type": "git",
