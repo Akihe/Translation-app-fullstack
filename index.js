@@ -15,7 +15,7 @@ const server = app.listen(port, () => {
   console.log(`Listening on port ${server.address().port}`);
 });
 
-app.get("/dictionary", async (req, res) => {
+app.get("/", async (req, res) => {
   res.send(await pool.findAll());
 });
 
@@ -46,9 +46,3 @@ app.put("/dictionary/:id([0-9]+)", async (req, res) => {
     res.status(500).send("error");
   }
 });
-
-function main() {
-  console.log("Hello world");
-}
-
-main();
