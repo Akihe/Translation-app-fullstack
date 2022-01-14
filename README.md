@@ -32,3 +32,7 @@ You get a list of words and an input field next to it. Type in your translation 
 Node
 React (JavaScript, CSS and HTML)
 MySQL
+
+# Screencast
+
+https://youtu.be/liHwM8wGDYw
