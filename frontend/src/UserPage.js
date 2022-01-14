@@ -183,7 +183,7 @@ function UserPage() {
 
   return (
     <div>
-      <h1>Translate O'Matic!</h1>
+      <h1>Translate words!</h1>
       <Button variant="outlined" onClick={() => selectLanguage(true)}>
         Play Finnish to English
       </Button>
