@@ -39,8 +39,7 @@ function UserPage() {
    * Fetches everything from the database
    */
   async function fetchAll() {
-    let data = await fetch("http://localhost:8080/dictionary");
-    //http://localhost:8080/dictionary
+    let data = await fetch("/dictionary");
     let js = await data.json();
     setDatabase(js);
   }

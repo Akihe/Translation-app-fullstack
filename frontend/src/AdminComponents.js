@@ -37,7 +37,7 @@ function AdminComponents() {
    * Sets each row that was found in to the database variable.
    */
   async function fetchAll() {
-    let data = await fetch("http://localhost:8080/dictionary");
+    let data = await fetch("/dictionary");
     let js = await data.json();
     setDatabase(js);
   }
@@ -55,7 +55,7 @@ function AdminComponents() {
    * @param {Int} id comes from which component the admin clicks the delete button on.
    */
   async function deleteFromDatabase(id) {
-    fetch(`http://localhost:8080/dictionary/${id}`, {
+    fetch(`/dictionary/${id}`, {
       method: "DELETE",
     });
   }
@@ -100,7 +100,7 @@ function AdminComponents() {
     setDatabase(editedDatabase);
 
     //fetch PUT gets caught by backend, edits the id given in the url.
-    fetch(`http://localhost:8080/dictionary/${id}`, {
+    fetch(`/dictionary/${id}`, {
       method: "PUT",
       headers: {
         Accept: "application/json",
@@ -170,7 +170,7 @@ function AdminComponents() {
    * Calls fetchAll() to fetch the newly added information from the database.
    */
   function postToDatabase() {
-    fetch("http://localhost:8080/dictionary/", {
+    fetch("/dictionary/", {
       method: "POST",
       headers: {
         Accept: "application/json",
