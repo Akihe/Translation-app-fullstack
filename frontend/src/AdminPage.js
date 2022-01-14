@@ -11,7 +11,7 @@ import AdminComponents from "./AdminComponents";
 function AdminPage() {
   return (
     <div>
-      <p>Insert a new word pair, edit or delete the current ones.</p>
+      <h1>Insert a new word pair, edit or delete the current ones.</h1>
       <AdminComponents />
     </div>
   );
