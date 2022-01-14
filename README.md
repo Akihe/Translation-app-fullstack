@@ -10,11 +10,17 @@ Implemented as a part of a school course during my 2nd year.
 # Screenshots
 
 ![Screenshot](images/1.png)
+Opening view
 ![Screenshot](images/2.png)
+Select tags from the dropdown button
 ![Screenshot](images/3.png)
+List of words to be translated
 ![Screenshot](images/4.png)
+Admin view
 ![Screenshot](images/5.png)
+Editing a word pair
 ![Screenshot](images/6.png)
+Inserting a new pair
 
 # How to use?
 
