@@ -19,7 +19,7 @@ const server = app.listen(port, () => {
 });
 
 // Serve static files from the React frontend app
-app.use(express.static("frontend"));
+app.use(express.static("frontend/build"));
 
 /**
  * Catches a /dictionary fetch GET made by frontend, calls a backend function
