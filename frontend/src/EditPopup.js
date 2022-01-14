@@ -7,6 +7,14 @@ import DialogContent from "@mui/material/DialogContent";
 import DialogContentText from "@mui/material/DialogContentText";
 import DialogTitle from "@mui/material/DialogTitle";
 
+/**
+ * @author Aki Helin
+ * @version 1.0
+ *
+ * Contains the html elements (MUI custom elements) for the edit popup window thats called when admin wants to edit a word pair.
+ * @param {*} params gets values for the original words, boolean for opening the popup and functions for handling the edits.
+ * @returns the popup window
+ */
 function EditPopup({
   originalWord,
   correctTranslation,

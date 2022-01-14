@@ -4,6 +4,11 @@ import React from "react";
 import UserPage from "./UserPage";
 import AdminPage from "./AdminPage";
 
+/**
+ * Calls the page components and changes the url to match your location.
+ * Router enables us to have two different views without separate HTML files.
+ * @returns
+ */
 function App() {
   return (
     <div className="App">

@@ -1,4 +1,32 @@
-import React, { useEffect, useState } from "react";
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>JSDoc: Source: frontend/src/UserPage.js</title>
+
+    <script src="scripts/prettify/prettify.js"> </script>
+    <script src="scripts/prettify/lang-css.js"> </script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="styles/prettify-tomorrow.css">
+    <link type="text/css" rel="stylesheet" href="styles/jsdoc-default.css">
+</head>
+
+<body>
+
+<div id="main">
+
+    <h1 class="page-title">Source: frontend/src/UserPage.js</h1>
+
+    
+
+
+
+    
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>import React, { useEffect, useState } from "react";
 import TranslationComponent from "./TranslationComponent";
 import OutlinedInput from "@mui/material/OutlinedInput";
 import InputLabel from "@mui/material/InputLabel";
@@ -8,7 +36,6 @@ import ListItemText from "@mui/material/ListItemText";
 import Select from "@mui/material/Select";
 import Checkbox from "@mui/material/Checkbox";
 import { Button } from "@mui/material";
-import { logDOM } from "@testing-library/react";
 
 /**
  * @author Aki Helin
@@ -100,28 +127,28 @@ function UserPage() {
       );
     };
     return (
-      <div>
-        <FormControl sx={{ m: 1, width: 300 }}>
-          <InputLabel id="demo-multiple-checkbox-label">Tag</InputLabel>
-          <Select
+      &lt;div>
+        &lt;FormControl sx={{ m: 1, width: 300 }}>
+          &lt;InputLabel id="demo-multiple-checkbox-label">Tag&lt;/InputLabel>
+          &lt;Select
             labelId="demo-multiple-checkbox-label"
             id="demo-multiple-checkbox"
             multiple
             value={selectedTag}
             onChange={handleChange}
-            input={<OutlinedInput label="Tag" />}
+            input={&lt;OutlinedInput label="Tag" />}
             renderValue={(selected) => selected.join(", ")}
             MenuProps={MenuProps}
           >
             {categories.map((tag) => (
-              <MenuItem key={tag} value={tag}>
-                <Checkbox checked={selectedTag.indexOf(tag) > -1} />
-                <ListItemText primary={tag} />
-              </MenuItem>
+              &lt;MenuItem key={tag} value={tag}>
+                &lt;Checkbox checked={selectedTag.indexOf(tag) > -1} />
+                &lt;ListItemText primary={tag} />
+              &lt;/MenuItem>
             ))}
-          </Select>
-        </FormControl>
-      </div>
+          &lt;/Select>
+        &lt;/FormControl>
+      &lt;/div>
     );
   }
 
@@ -134,16 +161,13 @@ function UserPage() {
    * @param {int} questionId Id of the question that the user wanted to be checked.
    */
   function correctQuestion(isCorrect, questionId) {
-    if (isCorrect) {
+    console.log(questionId);
+    console.log(correctAnswers.includes(questionId));
+    if (isCorrect &amp;&amp; !correctAnswers.includes(questionId)) {
       setCorrectAnswers((state, props) => {
-        const exists = state.some((id) => id === questionId);
-        if (exists) {
-          return state;
-        } else {
-          let updateCorrectQs = [...state, questionId];
-
-          return updateCorrectQs;
-        }
+        let updateCorrectQs = [...state, questionId];
+        console.log(state);
+        return updateCorrectQs;
       });
     } else {
       setCorrectAnswers((state, props) => {
@@ -162,7 +186,7 @@ function UserPage() {
     const chooseQuestions = database.map((question, index) => {
       if (selectedTag.includes(question.tag)) {
         return (
-          <TranslationComponent
+          &lt;TranslationComponent
             key={index}
             id={question.id}
             originalWord={question.word_in_finnish}
@@ -184,21 +208,44 @@ function UserPage() {
   }
 
   return (
-    <div>
-      <h1>Translate O'Matic!</h1>
-      <Button variant="outlined" onClick={() => selectLanguage(true)}>
+    &lt;div>
+      &lt;h1>Translate O'Matic!&lt;/h1>
+      &lt;Button variant="outlined" onClick={() => selectLanguage(true)}>
         Play Finnish to English
-      </Button>
-      <Button variant="outlined" onClick={() => selectLanguage(false)}>
+      &lt;/Button>
+      &lt;Button variant="outlined" onClick={() => selectLanguage(false)}>
         Play English to Finnish
-      </Button>
-      <MultipleSelectCheckmarks />
+      &lt;/Button>
+      &lt;MultipleSelectCheckmarks />
       {chosenQuestions}
-      <p>
+      &lt;p>
         Total points {correctAnswers.length} / {chosenQuestions.length}
-      </p>
-    </div>
+      &lt;/p>
+    &lt;/div>
   );
 }
 
 export default UserPage;
+</code></pre>
+        </article>
+    </section>
+
+
+
+
+</div>
+
+<nav>
+    <h2><a href="index.html">Home</a></h2><h3>Global</h3><ul><li><a href="global.html#AdminComponents">AdminComponents</a></li><li><a href="global.html#AdminPage">AdminPage</a></li><li><a href="global.html#App">App</a></li><li><a href="global.html#EditComponent">EditComponent</a></li><li><a href="global.html#EditPopup">EditPopup</a></li><li><a href="global.html#server">server</a></li><li><a href="global.html#TranslationComponent">TranslationComponent</a></li><li><a href="global.html#UserPage">UserPage</a></li></ul>
+</nav>
+
+<br class="clear">
+
+<footer>
+    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 3.6.7</a> on Fri Jan 14 2022 22:26:39 GMT+0200 (Itä-Euroopan normaaliaika)
+</footer>
+
+<script> prettyPrint(); </script>
+<script src="scripts/linenumber.js"> </script>
+</body>
+</html>
