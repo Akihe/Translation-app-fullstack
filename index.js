@@ -10,7 +10,7 @@ const pool = require("./database/db.js");
 app.use(express.json());
 app.use(cors());
 
-const port = process.env.PORT || 5000;
+const port = process.env.PORT || 8080;
 
 const server = app.listen(port, () => {
   console.log(`Listening on port ${server.address().port}`);
@@ -18,10 +18,6 @@ const server = app.listen(port, () => {
 
 // Serve static files from the React frontend app
 app.use(express.static("frontend/build"));
-// Anything that doesn't match the above, send back index.html
-app.get("*", (req, res) => {
-  res.sendFile(path.join("/frontend/build/index.html"));
-});
 
 app.get("/dictionary", async (req, res) => {
   res.send(await pool.findAll());
