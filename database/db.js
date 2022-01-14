@@ -1,5 +1,8 @@
 const mysql = require("mysql");
 
+/**
+ * config for Heroku purposes, also usable locally with .env file. Used to create the connection pool.
+ */
 let config = {
   host: "mydb.tamk.fi",
   user: process.env.user,
@@ -10,7 +13,14 @@ let config = {
 
 const pool = mysql.createPool(config);
 
+/**
+ * All the database functions are stored in this variable which is exported.
+ */
 let connectionFunctions = {
+  /**
+   * Gets everything from the database and returns them, rejects on error.
+   * @returns an array of all fetched rows
+   */
   findAll: () => {
     function func(resolve, reject) {
       let result = [];
@@ -19,16 +29,21 @@ let connectionFunctions = {
           reject();
         } else {
           locations.forEach((loc) => {
+            //goes through the results found and maps them in an array.
             result.push(loc);
           });
         }
-        console.log(result);
         resolve(result);
       });
     }
     return new Promise(func);
   },
 
+  /**
+   * Inserts a new row to the database
+   * @param {object} word has all the values to be inserted
+   * @returns
+   */
   save: (word) => {
     function func(resolve, reject) {
       let sql = mysql.format(
@@ -46,6 +61,12 @@ let connectionFunctions = {
     }
     return new Promise(func);
   },
+
+  /**
+   * Deletes a row from the database
+   * @param {int} id of the row to be deleted
+   * @returns
+   */
   deleteById: (id) => {
     function func(resolve, reject) {
       pool.query(
@@ -64,6 +85,12 @@ let connectionFunctions = {
     }
     return new Promise(func);
   },
+
+  /**
+   * Updates a row in the database
+   * @param {*} word Has all the new information to be updated
+   * @returns
+   */
   editById: (word) => {
     function func(resolve, reject) {
       let sql = mysql.format(
