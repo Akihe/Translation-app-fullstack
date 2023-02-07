@@ -1,7 +1,7 @@
 # full-stack-js-project
 
 A web-based full stack application that helps you learn English by giving you words which you translate to Finnish or vice versa.
-The app tells you if your answers are correct or not. (Used to be hosted in free Heroku and available for everyone to use at https://full-stack-js-project.herokuapp.com/.)
+The app tells you if your answers are correct or not. (Used to be hosted in free Heroku and available for everyone to use, unfortunately not free anymore.)
 Implemented as a part of a school course during my 2nd year.
 
 # Screenshots
